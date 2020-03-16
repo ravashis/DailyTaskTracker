@@ -1,0 +1,10 @@
+.mainDiv{
+    text-align: center;
+    font-family: 'Lucida Sans';
+}
+
+.login{
+    background-color: greenyellow;
+    font-size: 20 px;
+    padding: 15px 15px;
+}
