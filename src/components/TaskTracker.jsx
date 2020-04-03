@@ -10,6 +10,7 @@ import ErrorComponent from './ErrorComponent.jsx';
 import Home from './HomeComponent.jsx';
 import LogoutComponent from './LogoutComponent.jsx';
 import Welcome from './Welcome.jsx';
+import TaskComponent from './TaskComponent.jsx';
 
 class TaskTracker extends Component{
     render(){
@@ -21,7 +22,8 @@ class TaskTracker extends Component{
                     <Route path="/" exact component={Welcome}/>
                     <Route path="/login" component={Login}></Route>
                     <AuthenticatedRoute path="/home/:name" component={Home}></AuthenticatedRoute>
-                    <AuthenticatedRoute path="/tasks" component={ListTasks}></AuthenticatedRoute>
+                    <AuthenticatedRoute path="/tasks" exact component={ListTasks}></AuthenticatedRoute>
+                    <AuthenticatedRoute path="/tasks/:id" component={TaskComponent}></AuthenticatedRoute>
                     <AuthenticatedRoute path="/logout" component={LogoutComponent}></AuthenticatedRoute>  
                     <Route component={ErrorComponent}/>
                     </Switch>

@@ -34,7 +34,17 @@ constructor(props){
         console.log('called');
         HelloService.executeHelloUserService(AuthenticationService.getCurrentUser()).then(
             response => this.handleSuccess(response)
+        ).catch(
+            error => this.handleError(error)
         );
+    }
+
+    handleError(error){
+        this.setState(
+            {
+                welcomeUser:error.response.data.message
+            }
+        )
     }
 
     handleSuccess(response){
