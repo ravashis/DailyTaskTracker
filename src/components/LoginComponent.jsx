@@ -21,16 +21,21 @@ class Login extends Component{ //controlled component
     }
 
     loginClick(event){
-        if ((this.state.username === "admin") && (this.state.password === "admin")) 
-        {
-            AuthenticationService.registerSuccessfulLogin(this.state.username);
-            this.props.history.push(`/home/${this.state.username}`);
-            this.setState({hasLoginFailed:"false"});
-        }
-        else
-        {
-            this.setState({hasLoginFailed:"true"});
-        }
+        //AuthenticationService.executeBasicAuthentication(this.state.username,this.state.password)
+        AuthenticationService.executeJwtAuthentication(this.state.username,this.state.password)
+        .then(
+            (response) => {
+                AuthenticationService.registerSuccessfulJwtLogin(this.state.username,response.data.token);
+                this.props.history.push(`/home/${this.state.username}`);
+                this.setState({hasLoginFailed:"false"});
+            }
+        )
+        .catch(
+            () => {
+                this.setState({hasLoginFailed:"true"})
+            }
+        )
+
     }
 
 

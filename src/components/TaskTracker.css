@@ -9,6 +9,10 @@
     padding: 15px 15px;
 }
 
+.rightButton
+{
+    text-align: right
+}
 
 
 .taskDiv{

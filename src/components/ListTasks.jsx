@@ -52,14 +52,12 @@ class ListTasks extends Component{
     }
 
     render(){
-        const addStyle = {
-            'text-align': 'right'
-        };
+
         return(
-            <div className="taskDiv">
+            <div className='taskDiv'>
                <h1> Today's Itenary</h1>
                 <br />
-                <div style={addStyle}>
+                <div className='rightButton'>
                     <button className='btn btn-success' onClick={()=>this.addClicked()}>Add Task</button>
                 </div>
                 <br />
@@ -70,8 +68,8 @@ class ListTasks extends Component{
                       <thead>
                         <tr>
                             <th>Description</th>
-                            <th>IsCompleted</th>
                             <th>Target Date</th>
+                            <th>IsCompleted</th>
                             <th>Update Task</th>
                             <th>Delete Task</th>
                         </tr>
@@ -82,8 +80,8 @@ class ListTasks extends Component{
                             todo =>
                                     <tr key={todo.id}>
                                         <td>{todo.description}</td>
-                                        <td>{todo.done.toString()}</td>
                                         <td>{moment(todo.targetDate.toString()).format('YYYY-MM-DD')}</td>
+                                        <td>{todo.done.toString()}</td>
                                         <td><button className='btn btn-success' onClick={() => this.updateClicked(todo.id)}>Update</button></td>
                                         <td><button className='btn btn-warning' onClick={() => this.deleteClicked(todo.id)}>Delete</button></td>
                                     </tr>

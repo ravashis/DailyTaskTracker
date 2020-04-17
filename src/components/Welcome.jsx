@@ -25,12 +25,29 @@ class Welcome extends Component{
         HelloService.executeHelloService()
         .then(
             response => this.handleSuccessfulResponse(response)
+        ).catch(
+            error => this.handleError(error)
         );
     }
 
     handleSuccessfulResponse(response){
         this.setState({
             welcomeFromService:response.data
+        })
+    }
+
+    handleError(error)
+    {
+        let errorMessage='';
+        
+        if(error.message)
+            errorMessage+=error.message;
+
+        if(error.response && error.response.data)
+            errorMessage+=error.response.data.message;
+
+        this.setState({
+            welcomeFromService:errorMessage
         })
     }
 
